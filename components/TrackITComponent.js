@@ -9,15 +9,13 @@ class TrackIT extends Component {
     };
   }
 
-
-
   render() {
     return (
       <View>
           <Text style={styles.pickerTitle}>Selected a GPU to be notified for: </Text>
           <Picker
           style={styles.picker}
-          selectedValue={this.state.selectedValue}
+          selectedValue={(value) => {this.setState({selectedValue: value})}}
           onValueChange={(itemValue, itemIndex) => {
             console.log("Selected " + itemValue);
           }}
