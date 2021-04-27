@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
+import { Button } from "react-native-elements";
 import { Picker } from "@react-native-picker/picker";
 
 class TrackIT extends Component {
@@ -29,6 +30,11 @@ class TrackIT extends Component {
           <Picker.Item label="Nvidia RTX 3080" value="rtx3080" />
           <Picker.Item label="Nvidia RTX 3090" value="rtx3090" />
         </Picker>
+          <Button
+          raised 
+          title="Submit"
+          onPress={() => {console.log("Submit button pressed");}}
+          />
       </View>
     );
   }
