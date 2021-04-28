@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import TrackIT from "./TrackITComponent";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator, DrawerContent, DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
-import { Icon } from "react-native-elements";
+import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
 
 const Stack = createStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
-const CustomDrawerComponent = (props) => {
+function CustomDrawerContent(props) {
   return (
-    <DrawerContentScrollView {...props} >
-      <DrawerItem label="My Name" />
+    <DrawerContentScrollView {...props}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.drawerHeader}>
+          <View style={{ flex: 1 }}>
+            <Avatar rounded icon={{ name: "computer", size: 30 }} />
+          </View>
+          <View style={{ flex: 2 }}>
+            <Text style={styles.headerName}>My Name</Text>
+          </View>
+        </View>
+      </SafeAreaView>
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
   );
-};
+}
 
 const TrackITStack = ({navigation}) => {
     return (
@@ -83,9 +92,9 @@ const FAQStack = ({navigation}) => {
     );
 }
 
-const MainDrawer = (props) => {
+const MainDrawer = () => {
   return(
-    <Drawer.Navigator>
+    <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props}/>} >
       <Drawer.Screen name="TrackIT" component={TrackITStack} />
       <Drawer.Screen name="FAQs" component={FAQStack} />
     </Drawer.Navigator>
@@ -105,5 +114,24 @@ class Main extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+  drawerHeader: {
+    backgroundColor: "#2459E0",
+    height: 80,
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    flexDirection: "row",
+  },
+  container: {
+    flex: 1,
+  },
+  headerName: {
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#ffffff",
+  },
+});
 
 export default Main;
