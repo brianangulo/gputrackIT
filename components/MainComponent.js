@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import TrackIT from "./TrackITComponent";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator, DrawerContent, DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
 
