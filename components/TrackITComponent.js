@@ -2,16 +2,13 @@ import React, { Component } from "react";
 import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
 import { Button } from "react-native-elements";
 import { Picker } from "@react-native-picker/picker";
+import { useDispatch, useSelector } from "react-redux";
+import { selectValue } from "../redux/appSlice";
 
-class TrackIT extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        selectedValue: "",
-    };
-  }
+function TrackIT() {
+  const dispatch = useDispatch();
+  const selectedValue = useSelector((state) => state.app.selectedValue);
 
-  render() {
     return (
       <View style={styles.container}>
         <View style={{ flex: 0.4, marginTop: 70 }}>
@@ -21,10 +18,10 @@ class TrackIT extends Component {
         </View>
         <View style={{ flex: 0.5 }}>
           <Picker
-            selectedValue={this.state.selectedValue}
+            selectedValue={selectedValue}
             onValueChange={(itemValue, itemIndex) => {
-              console.log("Selected " + itemValue);
-              this.setState({ selectedValue: itemValue });
+              console.log("Selected " + itemValue)
+              dispatch(selectValue(itemValue))
             }}
             style={styles.picker}
           >
@@ -45,7 +42,6 @@ class TrackIT extends Component {
         </View>
       </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
