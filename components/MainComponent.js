@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
+import { NavigationContainer } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
@@ -110,7 +111,9 @@ class Main extends Component {
     }
     render() {
         return (
+          <NavigationContainer>
             <MainDrawer />
+          </NavigationContainer>
         );
     }
 }
