@@ -33,50 +33,44 @@ class FAQ extends Component {
 
   render() {
     return (
-      <View>
-        <Card>
-          <Card.Title>FAQs</Card.Title>
-          <Card.Divider />
-          <Text style={styles.subtitle}>
-            {this.state.faqInfo.map((subtitle) => {
-              return subtitle.subtitle1;
-            })}
-            {"\n"}
-          </Text>
-          <Text>
-            {this.state.faqInfo.map((subtitle) => {
-              return subtitle.answer1;
-            })}
-            {"\n"}
-          </Text>
-          <Text style={styles.subtitle}>
-            {this.state.faqInfo.map((subtitle) => {
-              return subtitle.subtitle2;
-            })}
-            {"\n"}
-          </Text>
-          <Text>
-            {this.state.faqInfo.map((subtitle) => {
-              return subtitle.answer2;
-            })}
-          </Text>
-        </Card>
-        <Card>
-          <Card.Title>Bug Report/Developer Contact</Card.Title>
-          <Card.Divider />
-          <Text style={styles.subtitle}>
-            {this.state.faqInfo.map((subtitle) => {
-              return subtitle.contacttype;
-            })}
-            {"\n"}
-          </Text>
-          <Text>
-            {this.state.faqInfo.map((subtitle) => {
-              return subtitle.email;
-            })}
-          </Text>
-        </Card>
-      </View>
+      this.state.faqInfo && this.state.faqInfo.map(
+        (faqs) => {
+          return (
+            <View>
+          <Card>
+            <Card.Title>FAQs</Card.Title>
+            <Card.Divider />
+            <Text style={styles.subtitle}>
+              {faqs.subtitle1}
+              {"\n"}
+            </Text>
+            <Text>
+              {faqs.answer1}
+              {"\n"}
+            </Text>
+            <Text style={styles.subtitle}>
+              {faqs.subtitle2}
+              {"\n"}
+            </Text>
+            <Text>
+              {faqs.answer2}
+            </Text>
+          </Card>
+          <Card>
+            <Card.Title>Bug Report/Developer Contact</Card.Title>
+            <Card.Divider />
+            <Text style={styles.subtitle}>
+              {faqs.contacttype}
+              {"\n"}
+            </Text>
+            <Text>
+              {faqs.email}
+            </Text>
+          </Card>
+        </View>
+          );
+        }
+      )
     );
   }
 }
