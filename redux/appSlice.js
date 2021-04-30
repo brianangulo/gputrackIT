@@ -11,7 +11,7 @@ export const appSlice = createSlice({
           state.selectedValue = action.payload
       },
       getFaqs: (state, action) => {
-        state.faqInfo = (action.payload)
+        state.faqInfo = action.payload
       }
   }
 });
