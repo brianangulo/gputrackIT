@@ -1,6 +1,6 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Card } from "react-native-elements";
-import { View, Text, StyleSheet, LogBox } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { db, auth } from "../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { getFaqs } from "../redux/appSlice";
