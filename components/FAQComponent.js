@@ -1,20 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { Card } from "react-native-elements";
 import { View, Text, StyleSheet, LogBox } from "react-native";
 import { db, auth } from "../firebase/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { getFaqs } from "../redux/appSlice";
+
+
+
+function FAQ() {
+  const dispatch = useDispatch();
+  const faqInfo = useSelector((state) => state.app.faqInfo);
 
 const faqRef = db.collection("faq");
 
-class FAQ extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      faqInfo: [],
-
-     };
-  }
-
-  componentDidMount() {
+useEffect(() => {
     console.log("Mounted");
     faqRef.get().then(
       (snapshot) => {
@@ -25,15 +24,14 @@ class FAQ extends Component {
             info.push(data)
           }
         )
-        this.setState({faqInfo: info})
-        console.log(this.state.faqInfo)
+        dispatch(getFaqs(info))
+        console.log(faqInfo)
       }
     ).catch(error => console.log(error))
-  }
+    });
 
-  render() {
     return (
-      this.state.faqInfo && this.state.faqInfo.map(
+      faqInfo && faqInfo.map(
         (faqs) => {
           return (
             <View>
@@ -73,7 +71,6 @@ class FAQ extends Component {
       )
     );
   }
-}
 
 const styles = StyleSheet.create({
     subtitle: {

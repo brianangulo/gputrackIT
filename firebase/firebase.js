@@ -1,14 +1,17 @@
 import * as firebase from "firebase";
 import "firebase/firestore";
 
+require("dotenv").config();
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDzuFJauCKJtyicXppx-Izb5O7-ETo-0eo",
-  authDomain: "gputrackit.firebaseapp.com",
-  projectId: "gputrackit",
-  storageBucket: "gputrackit.appspot.com",
-  messagingSenderId: "963468499528",
-  appId: "1:963468499528:web:8c7480cec13c0f877e967d",
-  measurementId: "G-DNKSFJKCE6",
+  apiKey: process.env.FB_API_KEY,
+  authDomain: process.env.FB_AUTH_DOMAIN,
+  projectId: process.env.FB_PROJECT_ID,
+  storageBucket: process.env.FB_STORAGEBUCKET,
+  messagingSenderId: process.env.FB_MESSAGING_ID,
+  appId: process.env.FB_APP_ID,
+  measurementId: process.env.FB_MEASUREMENT_ID,
 };
 
 if (firebase.apps.length === 0) {
