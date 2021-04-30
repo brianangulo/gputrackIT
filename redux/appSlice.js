@@ -10,9 +10,12 @@ export const appSlice = createSlice({
       selectValue: (state, action) => {
           state.selectedValue = action.payload
       },
+      getFaqs: (state, action) => {
+        state.faqInfo = (action.payload)
+      }
   }
 });
 
-export const { selectValue } = appSlice.actions;
+export const { selectValue, getFaqs } = appSlice.actions;
 
 export default appSlice.reducer;
