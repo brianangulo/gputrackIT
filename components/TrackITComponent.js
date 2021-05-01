@@ -10,14 +10,15 @@ function TrackIT() {
   const price = useSelector((state) => state.app.price);
   const gpu = useSelector((state) => state.app.gpu);
 
-  const [apiResponse, setApiResponse] = useState({});
   const [asin, setAsin] = useState("B091H2KFDH");
 
   // asin3060: "B091H2KFDH",
   // asin3070: "B08YQNGXBL",
   // asin3080: "B0936GL8WP"
 
-  useEffect(
+  //gpu is selected value state
+
+  const fetchPrice = () => {
     fetch(
       `https://amazon-price1.p.rapidapi.com/priceReport?marketplace=US&asin=${asin}`,
       {
@@ -30,15 +31,16 @@ function TrackIT() {
       }
     )
       .then( response => response.json())
-      .then(data => setApiResponse(data))
-      .then(() => {
-        const apiPrice = apiResponse.prices.priceNew
-            console.log(apiResponse); 
-            dispatch(setPrice(apiPrice));
+      .then(data => {
+        const apiPrice = data
+        dispatch(setPrice(apiPrice.prices.priceNew))
       })
       .catch((err) => {
         console.error(err);
-      }))
+      })
+    }
+
+    useEffect(() => fetchPrice());
 
   const gpuToAsin = (gpuValue) => {
     if (gpuValue === "RTX3060") {
@@ -68,7 +70,6 @@ function TrackIT() {
           onValueChange={(itemValue, itemIndex) => {
             console.log("Selected " + itemValue);
             dispatch(setGpu(itemValue));
-            console.log(apiResponse.prices.priceNew);
           }}
           style={styles.picker}
         >
@@ -84,6 +85,7 @@ function TrackIT() {
           onPress={() => {
             console.log("Submit button pressed");
             gpuToAsin(gpu);
+            fetchPrice();
           }}
         />
       </View>

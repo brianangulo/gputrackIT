@@ -4,7 +4,7 @@ export const appSlice = createSlice({
   name: "app",
   initialState: {
     faqInfo: [],
-    price: "0.00",
+    price: 0.00,
     gpu: "RTX3060",
   },
   reducers: {
