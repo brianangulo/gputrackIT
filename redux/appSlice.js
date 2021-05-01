@@ -4,7 +4,7 @@ export const appSlice = createSlice({
   name: "app",
   initialState: {
     faqInfo: [],
-    price: 0,
+    price: "0.00",
     gpu: "RTX3060",
   },
   reducers: {
@@ -12,7 +12,7 @@ export const appSlice = createSlice({
       state.faqInfo = action.payload;
     },
     setPrice: (state, action) => {
-      state.price = state.price + action.payload;
+      state.price = action.payload;
     },
     setGpu: (state, action) => {
       state.gpu = action.payload;

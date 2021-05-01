@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { Picker } from "@react-native-picker/picker";
@@ -10,17 +10,16 @@ function TrackIT() {
   const price = useSelector((state) => state.app.price);
   const gpu = useSelector((state) => state.app.gpu);
 
-  const [apiResponse, setApiResponse] = useState();
+  const [apiResponse, setApiResponse] = useState({});
+  const [asin, setAsin] = useState("B091H2KFDH");
 
-    const [asin, setAsin] = useState({
-      asin3060: "B091H2KFDH",
-      asin3070: "B08YQNGXBL",
-      asin3080: "B0936GL8WP",
-    });
+  // asin3060: "B091H2KFDH",
+  // asin3070: "B08YQNGXBL",
+  // asin3080: "B0936GL8WP"
 
-  const fetchPrice = () => {
+  useEffect(
     fetch(
-      "https://amazon-price1.p.rapidapi.com/priceReport?marketplace=US&asin=B093QKVRCY",
+      `https://amazon-price1.p.rapidapi.com/priceReport?marketplace=US&asin=${asin}`,
       {
         method: "GET",
         headers: {
@@ -30,23 +29,24 @@ function TrackIT() {
         },
       }
     )
-      .then((response) => {
-        console.log(response);
-        setApiResponse(response);
-        console.log(apiResponse);
+      .then( response => response.json())
+      .then(data => setApiResponse(data))
+      .then(() => {
+        const apiPrice = apiResponse.prices.priceNew
+            console.log(apiResponse); 
+            dispatch(setPrice(apiPrice));
       })
       .catch((err) => {
         console.error(err);
-      });
-  };
+      }))
 
   const gpuToAsin = (gpuValue) => {
     if (gpuValue === "RTX3060") {
-      return asin.asin3060;
+      setAsin("B091H2KFDH")
     } else if (gpuValue === "RTX3070") {
-      return asin.asin3070;
+      setAsin("B08YQNGXBL")
     } else {
-      return asin.asin3080;
+      setAsin("B0936GL8WP")
     }
   };
 
@@ -68,6 +68,7 @@ function TrackIT() {
           onValueChange={(itemValue, itemIndex) => {
             console.log("Selected " + itemValue);
             dispatch(setGpu(itemValue));
+            console.log(apiResponse.prices.priceNew);
           }}
           style={styles.picker}
         >
@@ -82,9 +83,7 @@ function TrackIT() {
           title="Submit"
           onPress={() => {
             console.log("Submit button pressed");
-            dispatch(setPrice(10));
-            // const gpuAsin = gpuToAsin(gpu);
-            fetchPrice();
+            gpuToAsin(gpu);
           }}
         />
       </View>
