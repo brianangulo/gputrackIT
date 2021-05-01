@@ -4,6 +4,7 @@ import { Button } from "react-native-elements";
 import { Picker } from "@react-native-picker/picker";
 import { useDispatch, useSelector } from "react-redux";
 import { setGpu, setPrice } from "../redux/appSlice";
+import config from "../config";
 
 function TrackIT() {
   const dispatch = useDispatch();
@@ -24,8 +25,7 @@ function TrackIT() {
       {
         method: "GET",
         headers: {
-          "x-rapidapi-key":
-            "9571710ab5mshff39bd0757b0b45p1cfaabjsnd92e9bf923a4",
+          "x-rapidapi-key": config.RAPID_API_KEY,
           "x-rapidapi-host": "amazon-price1.p.rapidapi.com",
         },
       }
