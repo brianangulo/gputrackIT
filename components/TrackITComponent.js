@@ -33,7 +33,8 @@ function TrackIT() {
       .then( response => response.json())
       .then(data => {
         const apiPrice = data
-        dispatch(setPrice(apiPrice.prices.priceNew))
+        dispatch(setPrice((apiPrice.lastPrice.priceNew/100).toFixed(2)))
+        console.log(apiPrice)
       })
       .catch((err) => {
         console.error(err);
@@ -61,7 +62,7 @@ function TrackIT() {
       </View>
       <View style={styles.priceView}>
         <Text style={styles.priceText}>
-          Current {gpu} price is: {price}
+          Current {gpu} price is: $ {price}
         </Text>
       </View>
       <View style={{ flex: 0.5 }}>
