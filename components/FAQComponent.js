@@ -32,7 +32,7 @@ const getData = () => {
 useEffect(() => {
     console.log("Mounted");
     getData();
-    });
+    }, []);
 
     return (
       faqInfo && faqInfo.map(
