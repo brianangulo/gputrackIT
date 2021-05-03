@@ -20,7 +20,7 @@ function CustomDrawerContent(props) {
             <Avatar rounded icon={{ name: "computer", size: 30 }} />
           </View>
           <View style={{ flex: 2 }}>
-            <Text style={styles.headerName}>My Name</Text>
+            <Text style={styles.headerName}>TrackIT</Text>
           </View>
         </View>
       </SafeAreaView>
