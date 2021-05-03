@@ -28,7 +28,6 @@ const getData = () => {
     .catch((error) => console.log(error));
 }
 
-//Infinite loop bug found when useEffect()
 useEffect(() => {
     console.log("Mounted");
     getData();

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import TrackIT from "./TrackITComponent";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
 import { NavigationContainer } from "@react-navigation/native";
@@ -25,6 +25,15 @@ function CustomDrawerContent(props) {
         </View>
       </SafeAreaView>
       <DrawerItemList {...props} />
+      <DrawerItem
+        label="Message Us"
+        onPress={() => console.log("Messaging Devs")}
+      />
+      <DrawerItem
+        label="Sign In"
+        onPress={() => console.log("Signing in with google")}
+      />
+      <DrawerItem label="Log Out" onPress={() => console.log("Logging out")} />
     </DrawerContentScrollView>
   );
 }
