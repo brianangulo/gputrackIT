@@ -13,6 +13,8 @@ function FAQ() {
 
 const faqRef = db.collection("faq");
 
+//Infinite loop bug found when useEffect()
+
 useEffect(() => {
     console.log("Mounted");
     faqRef.get().then(
