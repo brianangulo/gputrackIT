@@ -13,23 +13,25 @@ function FAQ() {
 
 const faqRef = db.collection("faq");
 
-//Infinite loop bug found when useEffect()
+const getData = () => {
+  faqRef
+    .get()
+    .then((snapshot) => {
+      const info = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        info.push(data);
+      });
+      dispatch(getFaqs(info));
+      console.log(faqInfo);
+    })
+    .catch((error) => console.log(error));
+}
 
+//Infinite loop bug found when useEffect()
 useEffect(() => {
     console.log("Mounted");
-    faqRef.get().then(
-      (snapshot) => {
-        const info = []
-        snapshot.forEach(
-          doc => {
-            const data = doc.data()  
-            info.push(data)
-          }
-        )
-        dispatch(getFaqs(info))
-        console.log(faqInfo)
-      }
-    ).catch(error => console.log(error))
+    getData();
     });
 
     return (

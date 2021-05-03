@@ -41,7 +41,9 @@ function TrackIT() {
       })
     }
 
-    useEffect(() => fetchPrice());
+    useEffect(() => {
+      console.log("Mounting");
+      fetchPrice()});
 
   const gpuToAsin = (gpuValue) => {
     if (gpuValue === "RTX3060") {
