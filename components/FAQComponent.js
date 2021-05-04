@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { Card } from "react-native-elements";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ToastAndroid } from "react-native";
 import { db, auth } from "../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { getFaqs } from "../redux/appSlice";
-
 
 
 function FAQ() {
@@ -25,7 +24,10 @@ const getData = () => {
       dispatch(getFaqs(info));
       console.log(faqInfo);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      ToastAndroid.show(`Unable to retrieve data: ${error}`, ToastAndroid.LONG);
+    });
 }
 
 useEffect(() => {
