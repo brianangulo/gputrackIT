@@ -64,6 +64,7 @@ function Contact() {
                 onBlur={onBlur}
                 onChangeText={(value) => onChange(value)}
                 value={value}
+                multiline={true}
               />
             )}
             name="body"
