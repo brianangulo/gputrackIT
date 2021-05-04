@@ -6,6 +6,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerI
 import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
 import { NavigationContainer } from "@react-navigation/native";
+import Contact from "./ContactComponent";
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,38 @@ function CustomDrawerContent(props) {
       />
       <DrawerItem label="Log Out" onPress={() => console.log("Logging out")} />
     </DrawerContentScrollView>
+  );
+}
+
+const ContactStack = ({navigation}) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Message Us"
+        component={Contact}
+        options={{
+          headerTitleStyle: {
+            color: "#ffffff",
+          },
+          headerStyle: {
+            backgroundColor: "#2459E0",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome-5"
+              color="#ffffff"
+              iconStyle={{ padding: 15 }}
+              onPress={() => {
+                navigation.openDrawer();
+                console.log("Drawer menu icon was clicked");
+              }}
+            />
+          ),
+        }}
+      />
+    </Stack.Navigator>
   );
 }
 
@@ -103,10 +136,13 @@ const FAQStack = ({navigation}) => {
 }
 
 const MainDrawer = () => {
-  return(
-    <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props}/>} >
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
       <Drawer.Screen name="TrackIT" component={TrackITStack} />
       <Drawer.Screen name="FAQs" component={FAQStack} />
+      <Drawer.Screen name="Message Us" component={ContactStack} />
     </Drawer.Navigator>
   );
 };
