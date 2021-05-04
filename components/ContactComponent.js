@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { Input } from "react-native-elements";
 import { useForm, Controller } from "react-hook-form";
+import { db } from "../firebase/firebase";
+import * as firebase from "firebase";
+import "firebase/firestore";
 
 
 function Contact() {
@@ -12,7 +15,23 @@ function Contact() {
       formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+      
+      console.log(data); 
+      
+      db.collection("contactus")
+        .add({
+          timestamp: firebase.firestore.Timestamp.now(),
+          subject: data.subject,
+          body: data.body,
+        })
+        .then(() => {
+          console.log("Document successfully written!");
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
 
     return (
       <View style={{ flex: 1 }}>
@@ -71,7 +90,7 @@ const styles = StyleSheet.create({
     errText: {
       color: "red",
       fontWeight: "bold",
-      fontSize: 15
+      fontSize: 15,
     }
 });
 
