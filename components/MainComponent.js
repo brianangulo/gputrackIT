@@ -27,10 +27,6 @@ function CustomDrawerContent(props) {
       </SafeAreaView>
       <DrawerItemList {...props} />
       <DrawerItem
-        label="Message Us"
-        onPress={() => console.log("Messaging Devs")}
-      />
-      <DrawerItem
         label="Sign In"
         onPress={() => console.log("Signing in with google")}
       />

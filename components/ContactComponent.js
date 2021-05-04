@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, ToastAndroid } from 'react-native';
 import { Input } from "react-native-elements";
 import { useForm, Controller } from "react-hook-form";
 import { db } from "../firebase/firebase";
@@ -27,9 +27,14 @@ function Contact() {
         })
         .then(() => {
           console.log("Document successfully written!");
+          ToastAndroid.show("Message succesfully sent", ToastAndroid.LONG)
         })
         .catch((error) => {
           console.error("Error writing document: ", error);
+          ToastAndroid.show(
+            `Error writing document: ${error}`,
+            ToastAndroid.LONG
+          );
         });
     }
 
@@ -60,7 +65,7 @@ function Contact() {
               <Input
                 style={styles.formBody}
                 label="Body: "
-                placeholder="Further explanation of your message..."
+                placeholder="Please provide any feedback..."
                 onBlur={onBlur}
                 onChangeText={(value) => onChange(value)}
                 value={value}
