@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Card } from "react-native-elements";
 import { View, Text, StyleSheet, ToastAndroid } from "react-native";
-import { db, auth } from "../firebase/firebase";
+import { db } from "../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { getFaqs } from "../redux/appSlice";
 
@@ -37,9 +37,9 @@ useEffect(() => {
 
     return (
       faqInfo && faqInfo.map(
-        (faqs) => {
+        (faqs, i) => {
           return (
-            <View>
+            <View key={i}>
           <Card>
             <Card.Title>FAQs</Card.Title>
             <Card.Divider />
