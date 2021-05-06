@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Button, ToastAndroid } from 'react-native';
 import { Input } from "react-native-elements";
 import { useForm, Controller } from "react-hook-form";
@@ -12,6 +12,7 @@ function Contact() {
     const {
       control,
       handleSubmit,
+      reset,
       formState: { errors },
     } = useForm();
 
@@ -28,6 +29,7 @@ function Contact() {
         .then(() => {
           console.log("Document successfully written!");
           ToastAndroid.show("Message succesfully sent", ToastAndroid.LONG)
+          reset()
         })
         .catch((error) => {
           console.error("Error writing document: ", error);
