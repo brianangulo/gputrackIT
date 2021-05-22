@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -196,3 +197,8 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/github_username
+=======
+# GPUTrackIT Price Tracker
+
+A simple app that allows you to check availability and price for your favorite graphics cards on amazon in just a couple of taps.
+>>>>>>> 087af51d9bdeac10c4e4c19e286d80f403e3836f
