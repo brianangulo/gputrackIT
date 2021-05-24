@@ -75,16 +75,16 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-<!-- LICENSE -->
+<!-- LICENSE 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for more information. -->
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/BrianAngulo11) - email [@email](mailto:bangulo219@gmail.com)
+Your Name - [@BrianAngulo11](https://twitter.com/BrianAngulo11) - [email](mailto:bangulo219@gmail.com)
 
 Project Link: [https://github.com/brianangulo/gputrackIT](https://github.com/brianangulo/gputrackIT)
 
