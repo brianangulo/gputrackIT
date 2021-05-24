@@ -1,3 +1,50 @@
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+***
+***
+***
+*** To avoid retyping too much info. Do a search and replace for the following:
+*** brianangulo, gputrackIT, twitter_handle, bangulo219@gmail.com, Brute Force It, Android app that lets you track Graphic Cards prices on Amazon
+-->
+
+
+
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/brianangulo/gputrackIT">
+    <img src="public/logo512.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Brute Force It</h3>
+
+  <p align="center">
+    Android app that lets you track Graphic Cards prices on Amazon
+    <br />
+    <br />
+    <a href="https://play.google.com/store/apps/details?id=com.gputrackit.gputrackit">View Live</a>
+    ·
+    <a href="https://github.com/brianangulo/gputrackIT/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/brianangulo/gputrackIT/issues">Request Feature</a>
+  </p>
+</p>
+
+
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -29,17 +76,21 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+
+
 ### Built With
 
-* React Native
-* Redux
-* Firebase
+* [React Native]()
+* [Node.js]()
+* [Redux]()
+
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
+
 
 ### Installation
 
@@ -51,16 +102,26 @@ To get a local copy up and running follow these simple steps.
    ```sh
    npm install
    ```
-2. Run Expo with your own device or Android Emulator
+   or yarn 
+    ```sh
+   yarn
+   ```
+3. Start development server
+
+ ```sh
+   npm start
+   ```
+   or yarn 
+    ```sh
+   yarn start
+   ```
 
 
 <!-- ROADMAP -->
 ## Roadmap
-Some features I have in mind are: 
 
-* Updating the UI UX
-* Adding a search functionality
-* Add authentication so users can save their own searches
+See the [open issues](https://github.com/brianangulo/gputrackIT/issues) for a list of proposed features (and known issues).
+
 
 
 <!-- CONTRIBUTING -->
@@ -75,45 +136,16 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-<!-- LICENSE 
+
+<!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information. -->
+No license as of yet
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@BrianAngulo11](https://twitter.com/BrianAngulo11) - [email](mailto:bangulo219@gmail.com)
+Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - bangulo219@gmail.com
 
 Project Link: [https://github.com/brianangulo/gputrackIT](https://github.com/brianangulo/gputrackIT)
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* The React Native Community
-* Stackoverflowers
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
-=======
-# GPUTrackIT Price Tracker
-
-A simple app that allows you to check availability and price for your favorite graphics cards on amazon in just a couple of taps.
->>>>>>> 087af51d9bdeac10c4e4c19e286d80f403e3836f
