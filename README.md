@@ -29,13 +29,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
-
 ### Built With
 
 * React Native
@@ -43,15 +36,10 @@ Here's a blank template to get started:
 * Firebase
 
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
 
 ### Installation
 
@@ -75,7 +63,6 @@ Some features I have in mind are:
 * Add authentication so users can save their own searches
 
 
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -88,12 +75,10 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
 
 
 <!-- CONTACT -->
@@ -104,13 +89,11 @@ Your Name - [@twitter_handle](https://twitter.com/BrianAngulo11) - email [@email
 Project Link: [https://github.com/brianangulo/gputrackIT](https://github.com/brianangulo/gputrackIT)
 
 
-
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
 * The React Native Community
 * Stackoverflowers
-
 
 
 
