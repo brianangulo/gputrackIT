@@ -26,10 +26,10 @@
 <br />
 <p align="center">
   <a href="https://github.com/brianangulo/gputrackIT">
-    <img src="public/logo512.png" alt="Logo" width="80" height="80">
+    <img src="assets/icon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Brute Force It</h3>
+  <h3 align="center">GPUTrackIT</h3>
 
   <p align="center">
     Android app that lets you track Graphic Cards prices on Amazon
