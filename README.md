@@ -106,12 +106,12 @@ To get a local copy up and running follow these simple steps.
     ```sh
    yarn
    ```
-3. Start development server
-
- ```sh
+3. Run dev server
+   ```sh
    npm start
    ```
    or yarn 
+   
     ```sh
    yarn start
    ```
