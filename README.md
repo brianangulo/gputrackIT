@@ -80,9 +80,9 @@
 
 ### Built With
 
-* [React Native]()
-* [Node.js]()
-* [Redux]()
+* [React Native](https://reactnative.dev/)
+* [Node.js](https://nodejs.org/en/)
+* [Redux](https://redux.js.org/)
 
 
 
