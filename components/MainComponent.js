@@ -7,6 +7,7 @@ import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
 import { NavigationContainer } from "@react-navigation/native";
 import Contact from "./ContactComponent";
+import Feed from "./FeedView";
 
 const Stack = createStackNavigator();
 
@@ -94,6 +95,14 @@ const TrackITStack = ({navigation}) => {
     );
 }
 
+const FeedStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="NewsFeed" component={Feed} />
+    </Stack.Navigator>
+  );
+};
+
 const FAQStack = ({navigation}) => {
     return (
       <Stack.Navigator>
@@ -132,6 +141,7 @@ const MainDrawer = () => {
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen name="TrackIT" component={TrackITStack} />
+      <Drawer.Screen name="NewsFeed" component={FeedStack} />
       <Drawer.Screen name="FAQs" component={FAQStack} />
       <Drawer.Screen name="Message Us" component={ContactStack} />
     </Drawer.Navigator>
