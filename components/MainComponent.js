@@ -95,10 +95,34 @@ const TrackITStack = ({navigation}) => {
     );
 }
 
-const FeedStack = () => {
+const FeedStack = ({navigation}) => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="NewsFeed" component={Feed} />
+      <Stack.Screen
+        name="NewsFeed"
+        component={Feed}
+        options={{
+          headerTitleStyle: {
+            color: "#ffffff",
+          },
+          headerStyle: {
+            backgroundColor: "#2459E0",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome-5"
+              color="#ffffff"
+              iconStyle={{ padding: 15 }}
+              onPress={() => {
+                navigation.openDrawer();
+                console.log("Drawer menu icon was clicked");
+              }}
+            />
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 };

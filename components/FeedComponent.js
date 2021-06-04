@@ -2,7 +2,7 @@
 import React from "react";
 import { FlatList } from "react-native";
 //importing some dependencies
-import { ListItem, Button } from "react-native-elements";
+import { ListItem, Icon } from "react-native-elements";
 //Url previewer
 import RNUrlPreview from "react-native-url-preview";
 
@@ -18,9 +18,13 @@ function FeedList(props) {
         <ListItem.Content>
           <RNUrlPreview text={item.link} />
         </ListItem.Content>
-        <Button
-          title="Save"
-          onPress={() => console.log("Save button pressed")}
+        <Icon
+          type="font-awesome"
+          name="heart"
+          reverse
+          reverseColor="white"
+          size={20}
+          color="#2459E0"
         />
       </ListItem>
     );
