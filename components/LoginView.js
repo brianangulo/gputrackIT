@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
-import { Text, Button, Input, Switch } from "react-native-elements";
+import { Text, Button, Input, Switch, Icon } from "react-native-elements";
 import { moderateScale } from "react-native-size-matters";
 //Animations library lottie
 import LottieView from "lottie-react-native";
@@ -19,11 +19,7 @@ function LoginView() {
         </Text>
         <Text style={styles.subTitle}>Welcome Back!</Text>
         <View style={styles.animationView}>
-            <LottieView
-            autoPlay
-            loop
-            source={animation}            
-            />
+          <LottieView autoPlay loop source={animation} />
         </View>
       </View>
       <View style={styles.inputView}>
@@ -31,12 +27,14 @@ function LoginView() {
           textContentType="emailAddress"
           label="Email"
           placeholder="email@email.com"
+          leftIcon={<Icon name="email" size={21} color="black" />}
         />
         <Input
           label="Password"
           placeholder="Password"
           textContentType="password"
           secureTextEntry
+          leftIcon={<Icon name="lock" size={21} color="black" />}
         />
         <View style={styles.switchView}>
           <Switch
