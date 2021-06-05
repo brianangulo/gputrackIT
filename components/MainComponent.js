@@ -8,6 +8,7 @@ import FAQ from "./FAQComponent";
 import { NavigationContainer } from "@react-navigation/native";
 import Contact from "./ContactComponent";
 import Feed from "./FeedView";
+import LoginView from './LoginView';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,38 @@ function CustomDrawerContent(props) {
     </DrawerContentScrollView>
   );
 }
+
+const LoginStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={LoginView}
+        options={{
+          headerTitleStyle: {
+            color: "#ffffff",
+          },
+          headerStyle: {
+            backgroundColor: "#2459E0",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome-5"
+              color="#ffffff"
+              iconStyle={{ padding: 15 }}
+              onPress={() => {
+                navigation.openDrawer();
+                console.log("Drawer menu icon was clicked");
+              }}
+            />
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const ContactStack = ({navigation}) => {
   return (
@@ -168,6 +201,7 @@ const MainDrawer = () => {
       <Drawer.Screen name="NewsFeed" component={FeedStack} />
       <Drawer.Screen name="FAQs" component={FAQStack} />
       <Drawer.Screen name="Message Us" component={ContactStack} />
+      <Drawer.Screen name="Login" component={LoginStack} />
     </Drawer.Navigator>
   );
 };

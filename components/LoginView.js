@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text, Button, Input } from "react-native-elements";
 
 function LoginView() {
     
@@ -9,5 +10,7 @@ function LoginView() {
         </View>
     );
 }
+
+
 
 export default LoginView;
