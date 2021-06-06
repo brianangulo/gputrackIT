@@ -32,15 +32,19 @@ function CustomDrawerContent(props) {
       <DrawerItem 
       label="Sign Out"
       onPress={() => {
-        auth.signOut().then(
-          () => {
-            console.log("user signed out");
-          }
-        ).catch(
-          (err) => {
-            console.log(`Found Error ${err}`);
-          }
-        )
+        if (auth.currentUser !== null) {
+          auth
+            .signOut()
+            .then(() => {
+              console.log("user signed out");
+            })
+            .catch((err) => {
+              console.log(`Found Error ${err}`);
+            });
+        } else {
+          console.log("unable to sign out: no user signed in")
+        }
+        
       }}
       />
     </DrawerContentScrollView>
