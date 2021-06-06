@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Text, Button, Input, Switch, Icon } from "react-native-elements";
 import { moderateScale } from "react-native-size-matters";
@@ -6,6 +6,8 @@ import { moderateScale } from "react-native-size-matters";
 import LottieView from "lottie-react-native";
 //importing animation asset
 import animation from "../assets/loginAsset.json";
+//fb auth
+import { auth } from "../firebase/firebase";
 
 function LoginView() {
   //state hook for the switch component
@@ -13,16 +15,52 @@ function LoginView() {
   //hooks for the form control
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  //signed in user Hook
+  const [user, setUser] = useState("");
+  //useEffect for testing purposes only
   useEffect(() => {
-    console.log(email);
-  }, [email]);
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(`User: ${user.email} is signed in`);
+      } else {
+        console.log("No user is signed in at this time");
+      }
+    });
+  }, []);
+  
   //regex email & pwd
   const emailRegex =
     /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-
   const pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  
+  //Sign in logic + fb api
+  const handleSignIn = (email, password) => {
+    //sign in login
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in
+        console.log(userCredential);
+        setUser(userCredential.user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(` errCode: ${errorCode} & errMess: ${errorMessage}`);
+      });
 
+    console.log(user);
+  };
+
+  //Submit login button handler!
+  const handleSubmit = () => {
+    handleSignIn(email, password);
+    setEmail("");
+    setPassword("");
+    console.log(user);
+  }
+  
   return (
     <View style={styles.container}>
       <View style={styles.titleView}>
@@ -91,7 +129,7 @@ function LoginView() {
         <Button
           containerStyle={styles.signInButton}
           title="Sign In"
-          onPress={() => console.log(email)}
+          onPress={handleSubmit}
         />
         <View style={styles.signUpOfferView}>
           <Text style={styles.noAcctTxt}>

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import TrackIT from "./TrackITComponent";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
 import { NavigationContainer } from "@react-navigation/native";
+import { auth } from "../firebase/firebase";
 import Contact from "./ContactComponent";
 import Feed from "./FeedView";
 import LoginView from './LoginView';
@@ -28,6 +29,20 @@ function CustomDrawerContent(props) {
         </View>
       </SafeAreaView>
       <DrawerItemList {...props} />
+      <DrawerItem 
+      label="Sign Out"
+      onPress={() => {
+        auth.signOut().then(
+          () => {
+            console.log("user signed out");
+          }
+        ).catch(
+          (err) => {
+            console.log(`Found Error ${err}`);
+          }
+        )
+      }}
+      />
     </DrawerContentScrollView>
   );
 }
