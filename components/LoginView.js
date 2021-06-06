@@ -10,6 +10,18 @@ import animation from "../assets/loginAsset.json";
 function LoginView() {
   //state hook for the switch component
   const [switchValue, setSwitchValue] = useState(false);
+  //hooks for the form control
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    console.log(email);
+  }, [email]);
+  //regex email & pwd
+  const emailRegex =
+    /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+
+  const pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
   return (
     <View style={styles.container}>
@@ -28,6 +40,18 @@ function LoginView() {
           label="Email"
           placeholder="email@email.com"
           leftIcon={<Icon name="email" size={21} color="black" />}
+          value={email}
+          onChangeText={setEmail}
+          errorStyle={{ color: "red" }}
+          errorMessage={
+            //confusing ternary chaining usage so note to self:
+            //checking to see if user has entered any input by looking at the value of the controlling variable
+            email !== ""
+              ? emailRegex.test(email)
+                ? null
+                : "Please enter a valid email!"
+              : null
+          }
         />
         <Input
           label="Password"
@@ -35,6 +59,18 @@ function LoginView() {
           textContentType="password"
           secureTextEntry
           leftIcon={<Icon name="lock" size={21} color="black" />}
+          onChangeText={setPassword}
+          value={password}
+          errorStyle={{ color: "red" }}
+          errorMessage={
+            //confusing ternary chaining usage so note to self:
+            //checking to see if user has entered any input by looking at the value of the controlling variable
+            password !== ""
+              ? pwdRegex.test(password)
+                ? null
+                : "8+ letters and numbers only with at least 1+ number, 1+ upper-case"
+              : null
+          }
         />
         <View style={styles.switchView}>
           <Switch
@@ -55,7 +91,7 @@ function LoginView() {
         <Button
           containerStyle={styles.signInButton}
           title="Sign In"
-          onPress={() => console.log("Sign In Button Pressed")}
+          onPress={() => console.log(email)}
         />
         <View style={styles.signUpOfferView}>
           <Text style={styles.noAcctTxt}>
@@ -91,9 +127,7 @@ const styles = StyleSheet.create({
   buttonView: {
     flex: 2,
   },
-  title: {
-
-  },
+  title: {},
   subTitle: {
     color: "#86939e",
     marginVertical: 6,
@@ -134,9 +168,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
   },
-  animation: {
-      
-  },
+  animation: {},
 });
 
 export default LoginView;
