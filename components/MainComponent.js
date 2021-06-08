@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import TrackIT from "./TrackITComponent";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import { Icon, Avatar } from "react-native-elements";
 import FAQ from "./FAQComponent";
 import { NavigationContainer } from "@react-navigation/native";
+import { auth } from "../firebase/firebase";
 import Contact from "./ContactComponent";
+import Feed from "./FeedView";
+import LoginView from './LoginView';
 
 const Stack = createStackNavigator();
 
@@ -26,9 +29,59 @@ function CustomDrawerContent(props) {
         </View>
       </SafeAreaView>
       <DrawerItemList {...props} />
+      <DrawerItem 
+      label="Sign Out"
+      onPress={() => {
+        if (auth.currentUser !== null) {
+          auth
+            .signOut()
+            .then(() => {
+              console.log("user signed out");
+            })
+            .catch((err) => {
+              console.log(`Found Error ${err}`);
+            });
+        } else {
+          console.log("unable to sign out: no user signed in")
+        }
+        
+      }}
+      />
     </DrawerContentScrollView>
   );
 }
+
+const LoginStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={LoginView}
+        options={{
+          headerTitleStyle: {
+            color: "#ffffff",
+          },
+          headerStyle: {
+            backgroundColor: "#2459E0",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome-5"
+              color="#ffffff"
+              iconStyle={{ padding: 15 }}
+              onPress={() => {
+                navigation.openDrawer();
+                console.log("Drawer menu icon was clicked");
+              }}
+            />
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const ContactStack = ({navigation}) => {
   return (
@@ -94,6 +147,38 @@ const TrackITStack = ({navigation}) => {
     );
 }
 
+const FeedStack = ({navigation}) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="NewsFeed"
+        component={Feed}
+        options={{
+          headerTitleStyle: {
+            color: "#ffffff",
+          },
+          headerStyle: {
+            backgroundColor: "#2459E0",
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome-5"
+              color="#ffffff"
+              iconStyle={{ padding: 15 }}
+              onPress={() => {
+                navigation.openDrawer();
+                console.log("Drawer menu icon was clicked");
+              }}
+            />
+          ),
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const FAQStack = ({navigation}) => {
     return (
       <Stack.Navigator>
@@ -132,8 +217,10 @@ const MainDrawer = () => {
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen name="TrackIT" component={TrackITStack} />
+      <Drawer.Screen name="NewsFeed" component={FeedStack} />
       <Drawer.Screen name="FAQs" component={FAQStack} />
       <Drawer.Screen name="Message Us" component={ContactStack} />
+      <Drawer.Screen name="Login" component={LoginStack} />
     </Drawer.Navigator>
   );
 };
